@@ -11,4 +11,8 @@
     alert(combined + combined2+ combined3)
 
 
-    
+    const element = document.createElement("div");
+    element.append(document.createTextNode("Hello World!"));
+
+    const app = document.getElementById("item-body");
+    app.append(element);
