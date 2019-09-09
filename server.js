@@ -9,4 +9,4 @@ app.get('/', (req, res) => {
 
 app.use(express.static('epood'));
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
+app.listen(process.env.PORT||PORT, () => console.log(`Example app listening on port ${process.env.PORT||PORT}!`))
