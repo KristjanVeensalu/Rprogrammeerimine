@@ -36,7 +36,7 @@ utils.test(sumOfCost(mockItems), 9594);
  * Task 2
  */
 const getPhones = items => {
-  return "implement me"
+  return items.filter(item=>item.category==="phone")
 };
 
 utils.test(getPhones(mockItems).slice(-1)[0].name, "item19");
@@ -51,6 +51,17 @@ utils.test(getPhones(mockItems).length, 9);
  * Look tests below for more information
  */
 class User {
+  constructor(){
+    this.items=[]
+  }
+
+  addToCart(item){
+    this.items.push(item);
+  }
+
+  getCart(){
+    return this.items;
+  }
 }
 
 const user1 = new User();
