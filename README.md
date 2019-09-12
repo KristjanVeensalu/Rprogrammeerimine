@@ -2,7 +2,6 @@
 Rakenduste programmeerimine 2019 sügis
 
 
-Ülesanne 1: Sublime Text 3
-Ülesanne 2: Tehtud
+Kristjan Veensalu 
 
-
+https://infinite-oasis-16590.herokuapp.com/index.html
