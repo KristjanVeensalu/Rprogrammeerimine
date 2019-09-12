@@ -16,6 +16,8 @@ body {
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 25px;
+		position: sticky;
+		top:0;
 	}
 
 	.main_logo{
@@ -41,6 +43,7 @@ body {
 		width: 400px;
 		border-radius: 5px;
 		margin-bottom: 100px;
+		margin:0 auto;
 	}
 
 	.item:hover{
