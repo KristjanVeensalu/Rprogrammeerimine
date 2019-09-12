@@ -8,7 +8,7 @@
     const combined2 = " Cons: " +cost;
     const combined3 = " Path: " + src;
     console.log();
-    alert(combined + combined2+ combined3)
+   // alert(combined + combined2+ combined3)
 
 
     const container = document.createElement("div");
