@@ -1,5 +1,9 @@
    console.log("item.js loaded");
 
+function setup(){
+
+
+
     const x = window.location;
     console.log(x);
     const urlParams = new URLSearchParams(window.location.search);
@@ -38,7 +42,13 @@
     container.append(textElement);
     container.append(costElement);
 
-      window.addEventListener("load", () =>{
-        const app = document.getElementById("item-body");
-        app.append(container);
-    });
+    const app = document.getElementById("item-body");
+
+    if(!app) return;
+
+    app.append(container);
+
+}
+module.exports = {
+    setup,
+};
