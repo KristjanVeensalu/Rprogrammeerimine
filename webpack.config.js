@@ -3,8 +3,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode:"production",
-  entry: './src/index.js',
+  mode:"none",
+  entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -20,13 +20,19 @@ module.exports = {
   module: {
     rules: [
       { 
-        test: /\.js/, 
+        test: /\.(js|jsx$)/, 
         exclude: /node_modules/,
-        use: 'babel-loader' 
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env',
+                    '@babel/react',{
+                    'plugins': ['@babel/plugin-proposal-class-properties']}]
+        } 
       }
     ]
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, "dist"),
     compress:true,
     port:9000
