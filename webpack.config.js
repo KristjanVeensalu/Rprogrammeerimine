@@ -22,11 +22,17 @@ module.exports = {
       { 
         test: /\.(js|jsx$)/, 
         exclude: /node_modules/,
-        use: 'babel-loader' 
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env',
+                    '@babel/react',{
+                    'plugins': ['@babel/plugin-proposal-class-properties']}]
+        } 
       }
     ]
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, "dist"),
     compress:true,
     port:9000
