@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 import {phones, laptops} from "./mydatabase.js";
@@ -11,7 +11,7 @@ class HomePage extends React.PureComponent{
 		super(props);
 		this.state = {
 			items: phones,
-		}
+		};
 		
 	}
 	
@@ -45,8 +45,8 @@ class HomePage extends React.PureComponent{
 				</select>
 				<ItemList items = {this.state.items}/>
 			</>
-	)
+	);
 	}
-};
+}
 
 export default HomePage;
