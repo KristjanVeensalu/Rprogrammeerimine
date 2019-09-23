@@ -8,4 +8,17 @@ Kristjan Veensalu
 https://infinite-oasis-16590.herokuapp.com/
 
 
-![alt text](https://i.redd.it/3vf079y3c0o31.png)
+![alt text](https://i.redd.it/4orx0op2b7o31.jpg)
+
+Tehniline küsimus: 
+
+Kuidas seada React state ilma constructorita?
+Juhul kui ei soovi luua constructor et saada React state, siis on võimalik sead constructor niimoodi: 
+Lisage App classi algusesse järgmine kood: 
+```javascript
+ state = {
+    toggle: true,
+  };
+```
+
+
