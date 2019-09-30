@@ -22,3 +22,20 @@ Lisage classi algusesse järgmine kood:
 ```
 
 
+E-Poe funktsionaalsus
+
+1.Todete lisamine ostukorvi
+2.Toodete eemaldamine ostukorvist
+3.Esilehel kuvatakse tooteid
+4.Toodetel on oma genereeritud leheküljed +
+5.Tooteid saab filtreerida kategooriate järgi +
+6.Tooteid saab sorteerida hinna järgi
+7.Tooteid saab sorteerida hinnavahemiku järgi
+8.Tooteid saab otsida nime järgi
+9.Kasutaja saab registreerida
+10.Kasutaja saab sisse logida
+11.Registreerimine keelab valesisestusi ja /-ib sisestuse
+12.Toote lehekülg avaneb popupina
+13.Esilehel on klikitav banner reklaamiga
+14.Lehekülgedel on footer (?)
+15.Esilehel on võimalik näha kõiki kategooriaid
