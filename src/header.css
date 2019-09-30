@@ -1,0 +1,43 @@
+
+
+.my-header{
+		z-index: 100;
+		box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+		background: rgba(252, 161, 3);
+		padding: 25px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 25px;
+		position: sticky;
+		top:0;
+}
+.header_logo{
+	width: 60px;
+}
+.header_buttons{
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+.header_buttons img {
+	height: 40px;
+}
+.header_button {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	color: #333;
+	transition: all .3s;
+	cursor: pointer;
+}
+.header_button:first-of-type{
+	margin-right: 25px;
+}
+.header_button:hover{
+	color: grey;
+}
+.header_button-text{
+	padding-left: 5px;
+	font-size: 14px;
+}
