@@ -59,6 +59,10 @@ https://codepen.io/timseverien/pen/yvJkm
   }
 }
 
+.boxname{
+  text-transform: capitalize;
+}
+
 .checkbox, .checkbox-alt {
   background-color: #fff;
   display: inline-block;

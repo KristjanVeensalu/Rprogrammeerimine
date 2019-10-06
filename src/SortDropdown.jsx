@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./dropdownstyle.css";
+import "./SortDropdownStyle.css";
 
 class SortDropdown extends React.PureComponent{
 	state = {

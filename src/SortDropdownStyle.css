@@ -1,18 +1,20 @@
 
-
-
 /** Custom Select **/
 .custom-select-wrapper {
   position: relative;
   display: inline-block;
   user-select: none;
+  margin-bottom: 10px;  
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
+
 .custom-select-wrapper select {
   display: none;
 }
 .custom-select {
   position: relative;
-  display: inline-block;
+  display: inline-block; 
 }
 .custom-select-trigger {
   position: relative;
@@ -102,6 +104,7 @@
   line-height: 47px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
+  z-index: 9999;
 }
 .custom-option:first-of-type {
   border-radius: 4px 4px 0 0;
