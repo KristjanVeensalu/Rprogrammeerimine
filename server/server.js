@@ -1,8 +1,43 @@
+require("dotenv").config({path:"C:/Users/GurenZify/Rprogrammeerimine/.env" });
 const express = require('express')
 const app = express()
 const path= require("path");
 const PORT = process.env.PORT||5000;
 const DB = require("./database.js");
+const mongoose = require("mongoose");
+
+
+console.log(process.env.DB_USERNAME);
+
+var kittySchema = new mongoose.Schema({
+	name:String
+});
+var Kitten = mongoose.model("Kitten", kittySchema);
+
+const kitten1 = new Kitten({
+	name: "Blue cat 3"
+});
+
+const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@rprogrammeerimine-gdys3.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
+
+
+
+mongoose.connect(DB_URL)
+	.then(() => {
+		console.log("DB access success!")
+		kitten1.save(err =>{
+			if(err){
+				console.log("Error");
+			}
+			else{
+				console.log("Success! Saved");
+			}
+		});
+	})
+	.catch( err =>{
+		console.error("error happened", err)
+	});
 
 
 /** Lisasime GET all items*/
