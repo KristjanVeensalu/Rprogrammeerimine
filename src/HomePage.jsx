@@ -75,10 +75,10 @@ class HomePage extends React.PureComponent{
 
 	isSelected =(name)=> this.state.selectedCategories.indexOf(name)>=0;
 
-	handleSortDropwdown = () => {
+	handleSortDropwdown = (sortDirection) => {
 		console.log("sort", event.target.value);
 		this.setState({
-			sortDirection: parseInt(event.target.value),
+			sortDirection: sortDirection,
 		});
 	};
 
