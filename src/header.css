@@ -3,7 +3,7 @@
 .my-header{
 		z-index: 100;
 		box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
-		background: rgba(252, 161, 3);
+		background-color: #6aa;
 		padding: 25px;
 		display: flex;
 		justify-content: space-between;

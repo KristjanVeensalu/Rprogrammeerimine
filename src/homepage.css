@@ -1,0 +1,14 @@
+.itemFilters-wrapper{
+	display: flex;
+	margin: 0 auto;
+	padding: 20px;
+	width: 100%;
+
+}
+.boxname{
+	font-size: 16px;
+	margin-bottom: 10px;
+	color: #b79090;
+	text-align: center;
+
+}

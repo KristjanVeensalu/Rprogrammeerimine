@@ -18,7 +18,7 @@ const Header = () => {
 				</div>
 				<div className = {"header_button"}>
 					<img src = {cartIcon} style ={{height: 40}}/>
-					<div ClassName ={"header_button-text"}>Cart</div>
+					<div className ={"header_button-text"}>Cart</div>
 				</div>
 			</div>
 		</div>
