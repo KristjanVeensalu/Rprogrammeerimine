@@ -1,4 +1,4 @@
-require("dotenv").config({path:"C:/Users/GurenZify/Rprogrammeerimine/.env" });
+const result = require("dotenv").config();
 const express = require('express');
 const app = express();
 const path= require("path");
@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const userRouter = require("./user.js");
 
 
-
+console.log(result);
 
 const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@rprogrammeerimine-gdys3.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
