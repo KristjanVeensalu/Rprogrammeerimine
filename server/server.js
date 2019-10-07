@@ -1,4 +1,4 @@
-//require("dotenv").config({path:"C:/Users/GurenZify/Rprogrammeerimine/.env" });
+require("dotenv").config({path:"C:/Users/GurenZify/Rprogrammeerimine/.env" });
 const express = require('express');
 const app = express();
 const path= require("path");
@@ -10,7 +10,7 @@ const userRouter = require("./user.js");
 
 
 
-//const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@rprogrammeerimine-gdys3.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@rprogrammeerimine-gdys3.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 
 app.use(userRouter);
