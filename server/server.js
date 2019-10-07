@@ -2,18 +2,18 @@ const result = require("dotenv").config();
 const express = require('express');
 const app = express();
 const path= require("path");
-const PORT = process.env.PORT||5000;
+const PORT = process.env.PORT||3000;
 const DB = require("./database.js");
 const mongoose = require("mongoose");
-const userRouter = require("./user.js");
-
+const itemRouter = require("./item.router.js");
+const Item = require("./item.model.js");
 
 console.log(result);
 
 const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@rprogrammeerimine-gdys3.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 
-app.use(userRouter);
+app.use(itemRouter);
 
 
 app.get('/', (req, res) => {
@@ -36,8 +36,45 @@ function listen(){
 mongoose.connect(DB_URL)
 	.then(() => {
 		console.log("DB access success!")
+		migrate();
+		//deleteAllItems();
 		listen();
 		})
 	.catch( err =>{
 		console.error("error happened", err)
 });
+
+//Ei tea millal k6ik on salvestatud.
+ function migrate(){
+ 	Item.count({}, (err, countNr) =>{
+ 		if(err) throw err;
+ 		if(countNr > 0) {
+ 			console.log("Aleady had items, wont save.");
+ 			return;
+ 		}
+ 		saveAllItems();
+ 	});
+}
+
+function deleteAllItems(){
+	Item.deleteMany({}, (err, doc) =>{
+		console.log("err", err, "doc", doc);
+	});
+};
+
+
+function saveAllItems(){
+	console.log("Migrate started...");
+ 	const items = DB.getItems();
+ 	items.forEach(item =>{
+ 		const documentS = new Item(item);
+ 		documentS.save((err) =>{
+ 			if(err){
+ 				console.log(err);
+ 				throw new Error("Something happened during save");
+ 			}
+ 			console.log("save Success!!!");
+ 		})
+ 	});
+ 	console.log("items", items);
+}
