@@ -38,42 +38,42 @@ router.post("/api/items", (req,res) =>{
 });
 
 /**Lisasime GET item with ID*/
-router.get("/api/items/:itemId", (req,res) => {
-	res.send(DB.getItem(req.params.itemId));
-});
+//router.get("/api/items/:itemId", (req,res) => {
+//	res.send(DB.getItem(req.params.itemId));
+//});
 
 /** Lisasime GET all items*/
 
+//router.get("/api/items", (req, res)=>{
+//	res.json(DB.getItems());
+//});
+
+
+/**Andmebaas*/
 router.get("/api/items", (req, res)=>{
-	res.json(DB.getItems());
+	Item.find({},function(err,items){
+		if(err){
+			console.log("Error", err);
+			res.status(500).send(err);
+			return
+		}
+		res.send(items);
+	});
+	//res.json(DB.getItems());
 });
 
 
 /**Andmebaas*/
-//router.get("/api/items", (req, res)=>{
-//	Item.find({},function(err,items){
-//		if(err){
-//			console.log("Error", err);
-//			res.status(500).send(err);
-//			return
-//		}
-//		res.send(items);
-//	});
-	//res.json(DB.getItems());
-//});
-
-
-/**Andmebaas*/
-//router.get("/api/items/:itemId", (req,res) => {
-//	Item.findById(req.params.itemId, function(err, item) {
-//		if(err){
-//			console.log("Error", err);
-//			res.status(500).send(err);
-//			return
-//		}
-//		res.send(item);
-//	});
+router.get("/api/items/:itemId", (req,res) => {
+	Item.findById(req.params.itemId, function(err, item) {
+		if(err){
+			console.log("Error", err);
+			res.status(500).send(err);
+			return
+		}
+		res.send(item);
+	});
 	//res.send(DB.getItem(req.params.itemId));
-//});
+});
 
 module.exports = router;
