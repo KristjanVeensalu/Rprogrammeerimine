@@ -21,7 +21,7 @@ const Item =  mongoose.model("Item", itemSchema);
 router.post("/api/items", (req,res) =>{
 	const props = {
 		imgSrc:"google.com",
-		title:"phone red",
+		title:"phone blue",
 		price:200,
 		category:"phones",
 	}
