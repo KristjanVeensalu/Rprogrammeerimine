@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
 const User = require("./user.model.js");
+const bcrypt = require("bcrypt");
 
 
 
@@ -13,21 +14,24 @@ router.get("/api/users", (req, res) => {
 });
 
 router.post("/api/users/login", (req, res)=>{
-	User.findOne({email: req.body.email},(err, doc) =>{
-		if(err) return handleError(err, res);
-		res.send(doc);
+	User.login(req.body)
+	.then(user =>{
+		res.json(user);
+	})
+	.catch(err => {
+		handleError(err, res);
 	});
 });
 
 
 router.post("/api/users/signup", (req, res) =>{
-	console.log("body", req.body)
-	const user = new User(req.body);
-	user.save((err)=>{
-		if(err) return handleError(err, res);
-		console.log("Success save user");
-		res.status(200).json(user);
-	});
+	User.signup(req.body)
+		.then( user =>{
+			res.status(200).json(user);
+		})
+		.catch(err => {
+			return handleError(err, res);
+		})
 });
 
 router.delete("/api/users", (req,res)=>{
@@ -41,7 +45,7 @@ router.delete("/api/users", (req,res)=>{
 
 function handleError(err, res){
 	console.log(err);
-	res.send(500);
+	res.status(500);
 }
 
 module.exports = router;
