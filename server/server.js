@@ -52,7 +52,7 @@ mongoose.connect(DB_URL)
 
 /** Development environment. In Heroku we don't use .env file */
 if(process.env.NODE_ENV !== "production"){
-  require('dotenv').config();
+  require('dotenv').config();}
 
 //Ei tea millal k6ik on salvestatud.
  function migrate(){
