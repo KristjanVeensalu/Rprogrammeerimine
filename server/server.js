@@ -1,4 +1,4 @@
-const result = require("dotenv").config();
+//const result = require("dotenv").config();
 const express = require('express');
 const app = express();
 const path= require("path");
@@ -9,6 +9,12 @@ const itemRouter = require("./item.router.js");
 const userRouter = require("./user.router.js");
 const Item = require("./item.model.js");
 const bodyParser = require("body-parser");
+/** Development environment. In Heroku we don't use .env file */
+let result = 0
+if(process.env.NODE_ENV !== "production"){
+ result = require('dotenv').config();
+
+}
 
 console.log(result);
 
@@ -50,9 +56,7 @@ mongoose.connect(DB_URL)
 
 
 
-/** Development environment. In Heroku we don't use .env file */
-if(process.env.NODE_ENV !== "production"){
-  require('dotenv').config();}
+
 
 //Ei tea millal k6ik on salvestatud.
  function migrate(){
