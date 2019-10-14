@@ -64,13 +64,17 @@ https://codepen.io/timseverien/pen/yvJkm
 }
 
 .checkbox, .checkbox-alt {
-  background-color: #fff;
+  background-color: #f0f0f0;
   display: inline-block;
   height: 50px;
   margin: 0 0.25em;
   width: 50px;
   margin-bottom: 20px;
 }
+.checkbox label, .checkbox-alt label:hover{
+  cursor: pointer;
+}
+
 .checkbox label, .checkbox-alt label {
   display: block;
   height: 50px;
