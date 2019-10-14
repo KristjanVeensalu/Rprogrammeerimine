@@ -48,6 +48,12 @@ mongoose.connect(DB_URL)
 		console.error("error happened", err)
 });
 
+
+
+/** Development environment. In Heroku we don't use .env file */
+if(process.env.NODE_ENV !== "production"){
+  require('dotenv').config();
+
 //Ei tea millal k6ik on salvestatud.
  function migrate(){
  	Item.count({}, (err, countNr) =>{
