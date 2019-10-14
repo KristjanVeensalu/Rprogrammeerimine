@@ -41,3 +41,9 @@ mongoose.connect(DB_URL)
 	.catch( err =>{
 		console.error("error happened", err)
 });
+
+
+/** Development environment. In Heroku we don't use .env file */
+if(process.env.NODE_ENV !== "production"){
+  require('dotenv').config();
+}
