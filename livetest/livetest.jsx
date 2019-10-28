@@ -27,7 +27,7 @@ class LiveTest1 extends React.PureComponent {
         <div>{this.ITEMS.cost}</div>
         <hr/>
 
-        <div>Sum is {ITEMS.length} </div>
+        <div>Sum is {this.ITEMS.length} </div>
       </>
     );
   }
