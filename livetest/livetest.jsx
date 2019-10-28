@@ -26,7 +26,7 @@ class LiveTest1 extends React.PureComponent {
         {
           this.state.rows.map(item = >{
             return <div>{item.name) - {item.cost}</div>
-          })
+          });
         }
         <hr/>
 
