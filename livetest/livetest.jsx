@@ -23,8 +23,8 @@ class LiveTest1 extends React.PureComponent {
     return(
       <>
         <div>Products below:</div>
-        <div>{ITEMS.name}</div>
-        <div>{ITEMS.cost}</div>
+        <div>{this.ITEMS.name}</div>
+        <div>{this.ITEMS.cost}</div>
         <hr/>
 
         <div>Sum is {ITEMS.length} </div>
