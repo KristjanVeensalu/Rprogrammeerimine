@@ -39,4 +39,5 @@ E-Poe funktsionaalsus
 13. Esilehel on klikitav banner reklaamiga
 14. Lehekülgedel on footer (?)
 15. Esilehel on võimalik näha kõiki kategooriaid
+16. Leheküljel on dark mode
 
