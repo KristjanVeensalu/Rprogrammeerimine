@@ -42,13 +42,7 @@ class App extends React.Component{
 							render = {(props) => <LoginPage {...props} onLogin={this.handleLogin}/>} 
 						/>
 						<Route path = "/signup" exact component = {SignupPage} />
-						<Route 
-							path = "/users/:userId" 
-							exact 
-							render = {(props) => {
-								return <UserPage {...props} user={this.state.user}/>;
-							}} 
-						/>
+						<Route path = "/users/:userId" exact component = {UserPage}/>
 						<Route component = {Notfound}/>
 					</Switch>
 				</BrowserRouter>
