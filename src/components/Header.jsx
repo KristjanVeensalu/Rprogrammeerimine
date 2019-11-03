@@ -10,8 +10,7 @@ import authConsumer from "./authConsumer.jsx";
 
 
 
-const Header = ({token, user}) => {
-	console.log("header", token, user);
+const Header = ({user}) => {
 	return(
 		<div className = "my-header">
 			<Link to = {"/"}>

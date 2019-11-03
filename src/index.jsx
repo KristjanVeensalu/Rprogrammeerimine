@@ -8,6 +8,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import Notfound from "./pages/Notfound.jsx";
+import store from "./store.js";
+console.log("Hello world", store);
 
 const authDefaultValue = {
 	token:null,
