@@ -5,6 +5,7 @@ import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../components/SortDropdown.jsx";
+import {getItems} from "../actions/itemsActions.jsx";
 
 class HomePage extends React.PureComponent{
 	
@@ -24,13 +25,8 @@ class HomePage extends React.PureComponent{
 	}
 
 	fetchItems = () =>{
-		fetch("/api/v1/items")
-		.then(res =>{
-			console.log("res", res);
-			return res.json();
-		})
+		getItems()
 		.then(items => {
-			console.log("items", items);
 			this.setState({
 				items
 			});
@@ -40,25 +36,26 @@ class HomePage extends React.PureComponent{
 		});
 	}
 	
-	handleDropDown = (event) => {
-		console.log(event.target.value, event.target.name);
-		if(this.isSelected(event.target.name)){
-			const clone = this.state.selectedCategories.slice();
-			const index = this.state.selectedCategories.indexOf(event.target.name);
-			clone.splice(index, 1);
-			this.setState({
-				selectedCategories: clone
-			});
-		}
-		else{
-			this.setState({
-				selectedCategories: this.state.selectedCategories.concat([event.target.name])
-			});
-		}
-	//	this.setState({
-	//		selectedCategory: event.target.value
-	//	});
+	handleFilterSelect = (event) => {
+		const categoryName = event.target.name;
+
+		if(this.isSelected(categoryName)){ 
+			return this.unselectCategory(categoryName);}
+		this.selectCategory(categoryName);
 	};
+
+	selectCategory = (categoryName) =>{
+		this.setState({
+		selectedCategories: this.state.selectedCategories.concat([categoryName])
+		});
+	}
+
+	unselectCategory = (categoryName) => {
+		const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
+		this.setState({
+			selectedCategories: newArr
+		});
+	}
 	
 	getVisibleItems = () => {
 		return this.state.items
@@ -82,7 +79,6 @@ class HomePage extends React.PureComponent{
 	};
 
 	render(){
-		console.log("this.state",this.state);
 		const items = this.getVisibleItems();
 		return(
 		<>
@@ -90,7 +86,7 @@ class HomePage extends React.PureComponent{
 				<div className = {"innerfilterFirst"}>
 					<ItemFilters
 						allCategories = {this.state.allCategories}
-						handleDropDown = {this.handleDropDown}
+						handleDropDown = {this.handleFilterSelect}
 						isSelected = {this.isSelected}
 					/>
 				</div>

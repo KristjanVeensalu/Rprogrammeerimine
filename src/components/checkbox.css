@@ -117,7 +117,7 @@ https://codepen.io/timseverien/pen/yvJkm test
   -moz-animation: check 0.8s;
   -o-animation: check 0.8s;
   animation: check 0.8s;
-  border-color: #6aa;
+  border-color: black;
 }
 .checkbox.checkbox-alt label:hover:after, .checkbox-alt.checkbox-alt label:hover:after {
   -webkit-animation: check 0.8s ease infinite;

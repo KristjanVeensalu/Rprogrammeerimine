@@ -26,7 +26,6 @@ ItemList.propTypes={
 };
 
 const Item = (props) => {
-	console.log("items list", props);
 	return (
 		<Link to = {`/items/${props.id}`}>
 			<div className = {"item"}>

@@ -1,0 +1,18 @@
+.NT-text{
+	text-align: center;
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+}
+.NT-image{
+	margin:auto;
+}
+.notFound {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+body{
+	background-color: rgb(238,238,238);
+}
