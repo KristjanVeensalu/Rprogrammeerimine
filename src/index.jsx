@@ -7,7 +7,7 @@ import ItemPage from "./pages/itempage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
-import NotFound from "./pages/Notfound.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import store from "./store.js";
 import CartPage from "./pages/CartPage.jsx";
 console.log("Hello world", store);
@@ -47,7 +47,7 @@ class App extends React.Component{
 						<Route path = "/signup" exact component = {SignupPage} />
 						<Route path = "/users/:userId" exact component = {UserPage}/>
 						<Route path = "/checkout/cart" exact component = {CartPage}/>
-						<Route component = {Notfound}/>
+						<Route component = {NotFound}/>
 					</Switch>
 				</BrowserRouter>
 			</AuthContext.Provider>
