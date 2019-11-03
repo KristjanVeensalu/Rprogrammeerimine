@@ -19,10 +19,10 @@ const Header = ({user}) => {
 			<div className = "header_buttons">
 				{user.email && <WelcomeIcon user = {user}/>}
 				{!user.email && <LoginRegisterIcon />}
-				<div className = {"header_button"}>
+				<Link to={"/checkout/cart"} className = {"header_button"}>
 					<img src = {cartIcon} style ={{height: 40}}/>
 					<div className ={"header_button-text"}>Cart</div>
-				</div>
+				</Link>
 			</div>
 		</div>
 	);
