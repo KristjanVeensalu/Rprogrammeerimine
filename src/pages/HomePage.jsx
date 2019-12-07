@@ -1,136 +1,135 @@
 import React from "react";
-//import ReactDOM from "react-dom";
-import ItemList from "../components/ItemList.jsx";
+import ItemsList from "../components/ItemList.jsx";
 import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
-import SortDropdown from "../components/SortDropdown.jsx";
-import {getItems} from "../actions/itemsActions.jsx";
+import Dropdown from "../components/Dropdown.jsx";
+import {connect} from "react-redux";
+import {ItemProps} from "./CartPage.jsx";
+import {getItems} from "../store/actions";
+import * as selectors from "../store/selectors.js";
 
 class HomePage extends React.PureComponent{
-	
-	constructor(props) {
-		super(props);
-		this.state = {
-			sortDirection: -1,
-			items: [],
-			allCategories: ["phones", "laptops"],
-			selectedCategories: ["phones"],
-		};
-		
-	}
 
-	componentDidMount(){
-		this.fetchItems();
-	}
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
+  };
 
-	fetchItems = () =>{
-		getItems()
-		.then(items => {
-			this.setState({
-				items
-			});
-		})
-		.catch(err =>{
-			console.log("err", err);
-		});
-	}
-	
-	handleFilterSelect = (event) => {
-		const categoryName = event.target.name;
+  constructor(props){
+    super(props);
+    this.state = {
+      sortDirection: -1,
+      allCategories: ["phones", "laptops"],
+      selectedCategories: ["phones"],
+    };
+  }
 
-		if(this.isSelected(categoryName)){ 
-			return this.unselectCategory(categoryName);}
-		this.selectCategory(categoryName);
-	};
+  componentDidMount(){
+    this.props.dispatch(getItems());
+  } 
 
-	selectCategory = (categoryName) =>{
-		this.setState({
-		selectedCategories: this.state.selectedCategories.concat([categoryName])
-		});
-	}
+    handleFilterSelect = (event) => {
+      const categoryName = event.target.name;
+      if(this.isSelected(categoryName)){
+        return this.unselectCategory(categoryName);
+      }
+      this.selectCategory(categoryName);
+    };
 
-	unselectCategory = (categoryName) => {
-		const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
-		this.setState({
-			selectedCategories: newArr
-		});
-	}
-	
-	getVisibleItems = () => {
-		return this.state.items
-		.filter( item => this.isSelected(item.category))
-		.sort((a, b) => {
-			switch (this.state.sortDirection){
-				case -1: return b.price - a.price;
-				case 1: return a.price -b.price;
-			}
-		});
-	};
+    selectCategory = (categoryName) => {
+      this.setState( {
+        selectedCategories: this.state.selectedCategories.concat([categoryName])
+      });
+    };
 
+    unselectCategory = (categoryName) => {
+      const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
+      this.setState({
+        selectedCategories: newArr
+      });
+    };
 
-	isSelected =(name)=> this.state.selectedCategories.indexOf(name)>=0;
+    getVisibleItems = () => {
+      return this.props.items
+      .filter(item => this.isSelected(item.category))
+      .sort( (a, b) => {
+        switch (this.state.sortDirection) {
+          case -1: return b.price - a.price;
+          case 1: return a.price - b.price;
+        }
+      });
+    };
 
-	handleSortDropwdown = (sortDirection) => {
-		console.log("sort", event.target.value);
-		this.setState({
-			sortDirection: sortDirection,
-		});
-	};
+    isSelected = (name) => this.state.selectedCategories.indexOf(name) >=0;
 
-	render(){
-		const items = this.getVisibleItems();
-		return(
-		<>
-			<div className = {"filterBar"}>
-				<div className = {"innerfilterFirst"}>
-					<ItemFilters
-						allCategories = {this.state.allCategories}
-						handleDropDown = {this.handleFilterSelect}
-						isSelected = {this.isSelected}
-					/>
-				</div>
-				<div className = {"innerfilterSecond"}>
-					<SortDropdown
-						direction = {this.state.sortDirection}
-						onChange = {this.handleSortDropwdown}
-					/>
-				</div>
-			</div>
-			<div className = {"items-Settings"}>
-				<div className = {"FoundItems"}>
-					Found {items.length} {this.state.selectedCategories.join(", ")}
-				</div>
-			</div>
-			<ItemList items = {items}/>
-		</>
-	);
-	}
-}
+    handleSortDropdown = (sortDirection) => {
+      this.setState({
+        sortDirection,
+      });
+    };
 
-const ItemFilters = ({allCategories, handleDropDown,isSelected}) => {
-	return(
-	<div className = "itemFilters-wrapper">
-		{
-			allCategories.map( categoryName =>{
-				return (
-					<Checkbox
-						key ={categoryName}
-						name ={categoryName}
-						onChange ={handleDropDown}
-						checked ={isSelected(categoryName)}
-					/>
-				);
-			})
-		}
-	</div>
-	);
+    render(){
+      const visibleItems = this.getVisibleItems();
+      return (
+        <>
+        <div className={"body-wrapper"}>
+          <div className={"filters-wrapper"}>
+            <CategoriesFilter
+              allCategories={this.state.allCategories}
+              handleDropdown={this.handleFilterSelect}
+              isSelected={this.isSelected}
+            />
+          </div>
+        <div className={"items-header-wrapper"}>
+          <div>
+             Items found {visibleItems.length} for {this.state.selectedCategories.join(", ")} 
+          </div>
+          <Dropdown
+            direction={this.state.sortDirection}
+            onChange={this.handleSortDropdown}
+          />
+        </div>
+        <ItemsList items={visibleItems}/>
+        </div>
+        
+        </>
+      );
+    }
+  }
+
+  const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
+    return (
+      <>
+         {
+            allCategories.map( categoryName => {
+              return (
+                <Checkbox 
+                  key={categoryName}
+                  name = {categoryName} 
+                  onChange = {handleDropdown}
+                  checked = {isSelected(categoryName)}
+                />
+              );
+            })
+          }
+      </>
+    );
+  };
+
+  CategoriesFilter.propTypes = {
+    allCategories: PropTypes.array.isRequired,
+    handleDropdown: PropTypes.func.isRequired,
+    isSelected: PropTypes.func.isRequired,
+  };
+
+  const mapStateToProps = (store) => {
+    return {
+        items: selectors.getItems(store),
+    };
 };
-
-ItemFilters.propTypes = {
-	allCategories: PropTypes.array.isRequired,
-	handleDropDown: PropTypes.func.isRequired,
-	isSelected: PropTypes.func.isRequired,
-
-};
-export default HomePage;
+      
+     
+    
+  export default connect(mapStateToProps)(HomePage);
+  

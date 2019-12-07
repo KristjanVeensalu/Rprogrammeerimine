@@ -1,56 +1,61 @@
 const path = require('path');
-const CopyPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-  mode:"none",
+  mode: "production",
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  devtool:"eval-source-map",
   plugins: [
     new CleanWebpackPlugin(),
-  	new CopyPlugin([
-  		{
-  			from: "public"
-  		}
-  	])
+    new CopyPlugin([
+      {
+      from: "public"
+      }
+    ])
   ],
   module: {
     rules: [
       {
-        test:/\.css$/i,
-        use:['style-loader','css-loader'],
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
       {
-        enforce:"pre",
-        test: /\.(js|jsx$)/, 
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
-          failOnError:true,
+          failOnError: true,
         },
       },
-      { 
-        test: /\.(js|jsx$)/, 
+      {
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env',
-                    '@babel/react',{
-                    'plugins': ['@babel/plugin-proposal-class-properties']}]
-        } 
-      }
-    ]
+        use: "babel-loader",  
+        },
+        {
+          test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
+    ],
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: path.join(__dirname, "dist"),
-    compress:true,
-    port:8000,
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
     proxy: {
-      "/api": "http://localhost:3000"
+      '/api': 'http://localhost:3000'
     }
   }
 };
+

@@ -1,249 +1,35 @@
-body{
-	background-color: #f0f0f0;
-}
-.itemFilters-wrapper{
-	display: flex;
-	margin: 0 auto;
-	padding: 20px;
-	width: 100%;
-
-}
-.boxname{
-	font-size: 16px;
-	margin-bottom: 10px;
-	color: #b79090;
-	text-align: center;
-	margin-top: 10px;
-
-}
-
-.filterBar{
-	overflow: hidden;
-	z-index:9999;
-
-}
-
-.innerfilterFirst{
-	float: left;
-	margin-left: 10px;
-}
-
-.innerfilterSecond{
-	float: right;
-	margin-top: 30px;
-	margin-right: 10px;
-	margin-bottom: 110px;
-	z-index: 9999;
-}
-a{
-	text-decoration: none;
-}
-
-.category-wrapper{
-	padding: 25px;
-}
-
 body {
-	margin: 0;
-	}
-
-.FoundItems{
-	text-align: center;
-	border: 2px solid #b79090;
-	color: #b79090;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
+    background: #f4f4f4;
 }
 
-.content{
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
+.filters-wrapper {
+    border-radius: 5px;
+    padding: 15px;
+    background: white;
+    margin: 0px 5px;
+    display: flex;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
-.item{
-	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
-	border-radius: 5px;
-	text-align: center;
-	width: 400px;
-	border-radius: 5px;
-	margin-bottom: 100px;
-	background-color:white;
+.filters-wrapper > .toggler {
+    margin-right: 25px;
 }
 
-
-.item:hover{
-	transition: .2s all;
-	cursor: pointer;
-	box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
-	transform: scale(1.05);
-}
-.item img{
-	width: 400px;
-	height: 400px;
+.body-wrapper{
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-
-.item_title{
-	color: gray;
-	font-size: 18px;
-	text-decoration: none;
-}
-.item_price{
-	color:black;
-	font-size: 18px;
-	text-decoration: none;
+.items-header-wrapper{
+    display:flex;
+    justify-content: space-between;
+    margin: 15px 5px;
+    padding: 15px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    padding-right: 7px;
 }
 
-
-@media screen and (max-width: 1024px) {
-
-
-	body {
-		margin: 0;
-		}
-
-	.FoundItems{
-		text-align: center;
-		border: 2px solid #b79090;
-		color: #b79090;
-		margin-bottom: 10px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	.content{
-	}
-
-	.item{
-		box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
-		border-radius: 5px;
-		margin-bottom: 100px;
-		transform: scale(0.9, 0.9);
-		width: 100%;
-		text-align: left;
-	}
-
-
-	.item:hover{
-		transition: .2s all;
-		cursor: pointer;
-		box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
-		transform: scale(1.05);
-	}
-	.item img{
-		width: 400px;
-		height: 400px;
-		float: left;
-	}
-
-	.item_title{
-		color: gray;
-		font-size: 18px;
-		text-decoration: none;
-		height: 200px;
-		text-align: center;
-		padding-top: 175px;
-		font-size: 25px;
-	}
-	.item_price{
-		color:black;
-		font-size: 18px;
-		text-decoration: none;
-		text-align: center;
-		font-size: 25px;
-	}
-}
-
-@media screen and (max-width: 768px) {
-
-
-	.innerfilterSecond{
-		float: right;
-		margin-top: 30px;
-		margin-right: 10px;
-		width: 50%;
-	}
-	a{
-		text-decoration: none;
-	}
-
-	.category-wrapper{
-		padding: 25px;
-	}
-
-	body {
-		margin: 0;
-		}
-
-	.FoundItems{
-		text-align: center;
-		border: 2px solid #b79090;
-		color: #b79090;
-		margin-bottom: 10px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	.content{
-	}
-
-	.item{
-		box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
-		border-radius: 5px;
-		margin-bottom: 100px;
-		transform: scale(0.9, 0.9);
-		width: 100%;
-		height: 105%;
-		text-align: left;
-	}
-
-
-	.item:hover{
-		transition: .2s all;
-		cursor: pointer;
-		box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
-		transform: scale(1.05);
-	}
-	.item img{
-		width: 100px;
-		height: 100px;
-		float: left;
-		transform:scale(0.7,0.7);
-
-	}
-
-	.item_title{
-		color: gray;
-		font-size: 18px;
-		text-decoration: none;
-		height: 200px;
-		text-align: center;
-		padding-top: 175px;
-		font-size: 25px;
-	}
-	.item_price{
-		color:black;
-		font-size: 18px;
-		text-decoration: none;
-		text-align: center;
-		font-size: 50px;
-		transform: scale(0.5,0.5);
-		position: absolute;
-		top:2%;
-	}
-}
-
-@media screen and (max-width: 374px) {
-	.innerfilterSecond{
-		float: right;
-		margin-top: 30px;
-		margin-right: 10px;
-		width: 40%;
-		transform: scale(0.8,0.8);
-	}
-
-
-
+.items-header-wrapper {
+    color: #999;
 }

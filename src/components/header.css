@@ -1,93 +1,50 @@
-.my-header{
-		z-index: 100;
-		box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
-		background-color: #f5f5f5;
-		padding: 25px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 25px;
-		position: sticky;
-		top:0;
+.header {
+    z-index: 100;
+    box-shadow: 2px 2px 3px rgba(0,0,0,.1);
+    background: white;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    position: sticky;
+    top: 0;
 }
 .header_logo{
-	width: 60px;
+    width: 60px;
 }
 .header_buttons{
-	display: flex;
-	align-items: center;
-	cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .header_buttons img {
-	height: 40px;
+    height:25px;
 }
 .header_button {
-	display: flex;
-	align-items: center;
-	height: 100%;
-	color: #333;
-	transition: all .3s;
-	cursor: pointer;
-	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
-	border-radius: 12px;
-	padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 100;
+    color: #333;
+    transition: all .3s;
+    cursor: pointer;
 }
 .header_button:first-of-type{
-	margin-right: 25px;
+    margin-right: 25px;
 }
-.header_button:hover{
-	color: grey;
+.header_button:hover {
+    color: #d41d46;
 }
 .header_button-text{
-	padding-left: 5px;
-	font-size: 14px;
-	font-weight: bold;
+    padding-left: 5px;
+    font-size: 14px;
 }
 
-@media screen and (max-width: 450px) {
-	.my-header{
-		z-index: 100;
-		box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
-		background-color: #e5d9bd;
-		padding: 25px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 25px;
-		position: sticky;
-		top:0;
-		width: 100%;
-	}
-	.header_logo{
-		width: 40px;
-	}
-	.header_buttons{
-		display: flex;
-		align-items: center;
-		cursor: pointer;
-		margin-right: 10px;
-	}
-	.header_button img {
-		height: 20px !important; 
-	}
-	.header_button {
-		display: flex;
-		align-items: center;
-		height: 100%;
-		color: #333;
-		transition: all .3s;
-		cursor: pointer;
-		border: 2px solid gray;
-		border-radius: 12px;
-		padding: 10px;
-	}
-	.header_button:first-of-type{
-		margin-right: 25px;
-	}
-	.header_button:hover{
-		color: grey;
-	}
-	.header_button-text{
-		display: none;
-	}
+.badge {
+    position: absolute;
+    padding: 2px 6px;
+    background: #d41d46;
+    bottom: 17px;
+    color: white;
+    border-radius: 100%;
 }
