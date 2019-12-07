@@ -42,3 +42,16 @@
 	font-size: 18px;
 	text-decoration: none;
 	}
+
+.itemPage {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemPage-footer{
+    display: flex;
+    flex-basis: 100%;
+}
+.itemPage-content{
+	padding-left: 10px;
+}
