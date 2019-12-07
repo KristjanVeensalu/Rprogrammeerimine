@@ -1,4 +1,6 @@
- title: TLU
+openapi: '3.0.0'
+info:
+  title: TLU
   description: ""
   version: "1.0.0"
 servers:
@@ -6,7 +8,6 @@ servers:
 security: 
   - bearerAuth: []
 paths:
-  /api/v1/login:
 
   /items:
       get:
@@ -23,7 +24,7 @@ paths:
                     $ref: "#/components/schemas/Item"
           500:
             description: Error
-
+            
   /items/{itemId}:
       get:
         operationId: getItem
@@ -76,7 +77,7 @@ paths:
           description: Forbidden
         500:
           description: Error
-
+          
     delete:
       operationId: removeItemFromCart
       summary: Removes an item from a cart
@@ -90,42 +91,33 @@ paths:
           description: Forbidden
         500:
           description: err
-
+  
   /auth/login:
     post:
       operationId: login
       summary: User signs in
-@@ -16,15 +104,10 @@ paths:
+      description: ""
+      requestBody:
+        required: true
+        content:
+          application/json:
             schema:
               type: object
               properties:
-                token:
                 email:
                   type: string
                 password:
                   type: string
-                user:
-                  type: object
-                  properties:
-                    email:
-                      type: string
-                    password:
-                      type: string
       responses:
         200:
           description: OK.
-@@ -33,21 +116,25 @@ paths:
+          content:
+            application/json:
               schema:
                 type: object
                 properties:
-                  email:
                   token:
                     type: string
-                  createdAt:
-                    type: string
-                  _id:
-                    type: string
-
                   user:
                     type: object
                     properties:
@@ -139,20 +131,28 @@ paths:
           description: bad email or password
         401:
           description: unauthorized
-  /api/v1/signup:
   /auth/signup:
     post:
       operationId: signup
-      summary: User creates account
       summary: User makes an account
       description: ""
       requestBody:
         required: true
-@@ -66,4 +153,49 @@ paths:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: OK.
         422:
           description: bad email or password
         401:
-          description: unauthorized 
           description: unauthorized
 components:
   securitySchemes:
@@ -192,10 +192,10 @@ components:
       schema:
         type: string
       required: true
-
+      
     itemIdParam:
       in: path
       name: itemId
       schema:
         type: string
-      required: true 
+      required: true

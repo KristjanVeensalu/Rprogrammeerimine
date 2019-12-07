@@ -75,6 +75,8 @@ class HomePage extends React.PureComponent{
 		const visibleItems = this.getVisibleItems();
 		return(
 		<>
+			<div className = {"hero"}>
+			</div>
 			<div className = {"filterBar"}>
 				<div className = {"innerfilterFirst"}>
 					<CategoriesFilter
