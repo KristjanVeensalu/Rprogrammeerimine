@@ -1,6 +1,7 @@
 import React from "react";
 import Proptypes from "prop-types";
 import "./itempage.css";
+import FancyButton from "../components/FancyButton.jsx";
 
 class ItemPage extends React.PureComponent{
 
@@ -13,7 +14,7 @@ class ItemPage extends React.PureComponent{
 	}
 
 	fetchItem = () => {
-		fetch(`/api/items/${this.props.match.params.itemId}`)
+		fetch(`/api/v1/items/${this.props.match.params.itemId}`)
 		.then( res => {
 			return res.json();
 		})
@@ -32,12 +33,31 @@ class ItemPage extends React.PureComponent{
 	render(){
 		return(
 			<>
-				<div className = {"itemOnitem"}>
-					<img src = {this.state.imgSrc} />
-					<div className = {"item_titleOnitem"}>Name:  {this.state.title}</div>
-					<div className = {"item_priceOnitem"}>Price: {this.state.price}</div>
-					<div className = {"item_descOnitem"}>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
-				</div>
+        <div className={"box spacer itemPage"}>
+          <div style = {{
+            display: "flex",
+          }}>
+            <div className={"itemPage-left"}>
+              <img src={this.state.imgSrc} />
+            </div>
+            <div className={"itemPage-content"}>
+              <div><h2>{this.state.title}</h2></div>
+              <div>
+                <p className={"text--bold text--red"}>
+                  {this.state.price} €
+                </p>
+              </div>
+              <div>
+                <p style={{textAlign: "justify"}}>
+                  {loremIpsum}
+                </p>
+              </div>
+            </div>
+            </div>
+            <div className={"itemPage-footer"}>
+              <FancyButton onClick={()=>0}>Osta</FancyButton>
+            </div>
+          </div>
 			</>
 	);
 	}
@@ -47,4 +67,5 @@ ItemPage.propTypes = {
 	match: Proptypes.object.isRequired,
 };
 
-export default ItemPage;
+ export default ItemPage;
+ const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor sodales leo, vel tincidunt neque ultrices in. Praesent nisi sem, accumsan eget risus aliquam, egestas blandit tortor. Quisque id ultricies sem, nec aliquet dui. Sed et odio suscipit, iaculis mi quis, venenatis lorem. Quisque ex massa, aliquam eu tellus sagittis, dictum facilisis quam. Nulla hendrerit pellentesque placerat. Nam ornare libero id nunc accumsan, eu rhoncus nisi auctor. Nam nisi lectus, blandit sed pellentesque non, finibus vel metus. Nullam in blandit nulla. Suspendisse accumsan consectetur pharetra. Vivamus dictum nibh non dolor facilisis rhoncus. Quisque dignissim eu nulla vitae hendrerit. Suspendisse vitae turpis nisi";

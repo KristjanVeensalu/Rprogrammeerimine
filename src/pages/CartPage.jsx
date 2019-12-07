@@ -2,7 +2,8 @@ import React from "react";
 import {getItems} from "../actions/itemsActions.jsx";
 import PropTypes from "prop-types";
 import "../components/cart.css";
-import {FaAngleRight, FaRegTrashAlt} from "react-icons/fa";
+import {FaRegTrashAlt} from "react-icons/fa";
+import FancyButton from "../components/FancyButton.jsx";
 
 class CartPage extends React.PureComponent {
 	state = {
@@ -38,7 +39,7 @@ class CartPage extends React.PureComponent {
 						<tr><td>Kokku</td><td>200</td></tr>
 						<tr>
 							<td></td>
-							<td><div className = {"submit-button"}>Vormista Ost<FaAngleRight /></div></td>
+							<td> <td><FancyButton>Vormista</FancyButton></td></td>
 						</tr>
 						</tbody>
 					</table>

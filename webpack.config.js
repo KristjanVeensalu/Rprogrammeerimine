@@ -41,7 +41,13 @@ module.exports = {
                     '@babel/react',{
                     'plugins': ['@babel/plugin-proposal-class-properties']}]
         } 
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+        use:[{loader:'file-loader',}],
+      },
+
+
     ]
   },
   devServer: {
