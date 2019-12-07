@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import FancyButton from "../components/FancyButton.jsx";
 import { userUpdate, tokenUpdate } from "../store/actions";
 import protectedRedirect from "../components/protectedRedirect.jsx";
+import * as selectors from "../store/selectors.js";
 
 class UserPage extends React.PureComponent {
 
@@ -26,10 +27,10 @@ class UserPage extends React.PureComponent {
                         <div className="field">
                             {this.props.user.email}  
                         </div>
-                        <div className="field">
+                        <div className="field ">
                             {this.props.user.createdAt} 
                         </div>
-                        <FancyButton onClick={this.handleLogout}>Log Out</FancyButton> 
+                        <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton> 
                     </div>
                 </div>
             </div>
@@ -39,7 +40,7 @@ class UserPage extends React.PureComponent {
 
 const mapStateToProps = (store) => {
     return {
-        user: store.user,
+        user: selectors.getUser(store),
     };
 };
 

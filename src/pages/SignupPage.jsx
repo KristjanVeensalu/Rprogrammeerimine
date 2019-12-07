@@ -2,7 +2,8 @@ import React from "react";
 import "./form.css";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-
+import {toast} from "react-toastify";
+import * as services from "../services.js";
 class SignupPage extends React.PureComponent {
 
 	static propTypes = {
@@ -20,21 +21,14 @@ class SignupPage extends React.PureComponent {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log("submit", this.state);
-		fetch("/api/v1/auth/signup", {
-			method: "POST",
-			headers: {
-				"Content-Type":"application/json"
-			},
-			body: JSON.stringify(this.state),
-		})
-		.then(res =>res.json())
-		.then(data =>{
-			console.log("data", data);
+		services.signup(this.state)
+        .then( () => {
 			this.props.history.push("/login");
+			toast.success("Success!");
 		})
 		.catch(err =>{
 			console.log(err);
+			toast.error("Error!");
 			
 		});
 	};
