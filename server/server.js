@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const path= require("path");
-const PORT = process.env.PORT||5000;
+const PORT = process.env.PORT||3000;
 const DB = require("./database.js");
 const mongoose = require("mongoose");
 const itemRouter = require("./item.router.js");
