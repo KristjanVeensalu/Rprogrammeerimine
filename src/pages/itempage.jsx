@@ -2,8 +2,14 @@ import React from "react";
 import Proptypes from "prop-types";
 import "./itempage.css";
 import FancyButton from "../components/FancyButton.jsx";
+import {connect} from "react-redux";
+import { addItem } from "../store/actions";
 
 class ItemPage extends React.PureComponent{
+
+	static propTypes = {
+		dispatch: Proptypes.func.isRequired,
+	};
 
 	constructor(props){
 		super(props);
@@ -29,6 +35,9 @@ class ItemPage extends React.PureComponent{
 		});
 	}
 
+	handleBuy = () => {
+		this.props.dispatch(addItem(this.state)); 
+	}
 
 	render(){
 		return(
@@ -55,7 +64,7 @@ class ItemPage extends React.PureComponent{
             </div>
             </div>
             <div className={"itemPage-footer"}>
-              <FancyButton onClick={()=>0}>Osta</FancyButton>
+              <FancyButton onClick={this.handleBuy}>Osta</FancyButton>
             </div>
           </div>
 			</>
@@ -67,5 +76,5 @@ ItemPage.propTypes = {
 	match: Proptypes.object.isRequired,
 };
 
- export default ItemPage;
+ export default connect()(ItemPage);
  const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor sodales leo, vel tincidunt neque ultrices in. Praesent nisi sem, accumsan eget risus aliquam, egestas blandit tortor. Quisque id ultricies sem, nec aliquet dui. Sed et odio suscipit, iaculis mi quis, venenatis lorem. Quisque ex massa, aliquam eu tellus sagittis, dictum facilisis quam. Nulla hendrerit pellentesque placerat. Nam ornare libero id nunc accumsan, eu rhoncus nisi auctor. Nam nisi lectus, blandit sed pellentesque non, finibus vel metus. Nullam in blandit nulla. Suspendisse accumsan consectetur pharetra. Vivamus dictum nibh non dolor facilisis rhoncus. Quisque dignissim eu nulla vitae hendrerit. Suspendisse vitae turpis nisi";

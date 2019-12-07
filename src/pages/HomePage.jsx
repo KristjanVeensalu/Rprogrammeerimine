@@ -1,40 +1,33 @@
 import React from "react";
 //import ReactDOM from "react-dom";
-import ItemList from "../components/ItemList.jsx";
+import ItemsList from "../components/ItemList.jsx";
 import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../components/SortDropdown.jsx";
-import {getItems} from "../actions/itemsActions.jsx";
+import {connect} from "react-redux";
+import {ItemProps} from "./CartPage.jsx";
+import {getItems} from "../store/actions";
 
 class HomePage extends React.PureComponent{
 	
-	constructor(props) {
-		super(props);
-		this.state = {
-			sortDirection: -1,
-			items: [],
-			allCategories: ["phones", "laptops"],
-			selectedCategories: ["phones"],
-		};
-		
-	}
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
+  };
 
-	componentDidMount(){
-		this.fetchItems();
-	}
+  constructor(props){
+    super(props);
+    this.state = {
+      sortDirection: -1,
+      allCategories: ["phones", "laptops"],
+      selectedCategories: ["phones"],
+    };
+  }
 
-	fetchItems = () =>{
-		getItems()
-		.then(items => {
-			this.setState({
-				items
-			});
-		})
-		.catch(err =>{
-			console.log("err", err);
-		});
-	}
+  componentDidMount(){
+    this.props.dispatch(getItems());
+  } 
 	
 	handleFilterSelect = (event) => {
 		const categoryName = event.target.name;
@@ -58,7 +51,7 @@ class HomePage extends React.PureComponent{
 	}
 	
 	getVisibleItems = () => {
-		return this.state.items
+		return this.props.items
 		.filter( item => this.isSelected(item.category))
 		.sort((a, b) => {
 			switch (this.state.sortDirection){
@@ -79,12 +72,12 @@ class HomePage extends React.PureComponent{
 	};
 
 	render(){
-		const items = this.getVisibleItems();
+		const visibleItems = this.getVisibleItems();
 		return(
 		<>
 			<div className = {"filterBar"}>
 				<div className = {"innerfilterFirst"}>
-					<ItemFilters
+					<CategoriesFilter
 						allCategories = {this.state.allCategories}
 						handleDropDown = {this.handleFilterSelect}
 						isSelected = {this.isSelected}
@@ -99,38 +92,44 @@ class HomePage extends React.PureComponent{
 			</div>
 			<div className = {"items-Settings"}>
 				<div className = {"FoundItems"}>
-					Found {items.length} {this.state.selectedCategories.join(", ")}
+					Found {visibleItems.length} for {this.state.selectedCategories.join(", ")} 
 				</div>
 			</div>
-			<ItemList items = {items}/>
+			<ItemsList items={visibleItems}/>
 		</>
 	);
 	}
 }
 
-const ItemFilters = ({allCategories, handleDropDown,isSelected}) => {
+const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
 	return(
 	<div className = "itemFilters-wrapper">
 		{
-			allCategories.map( categoryName =>{
-				return (
-					<Checkbox
-						key ={categoryName}
-						name ={categoryName}
-						onChange ={handleDropDown}
-						checked ={isSelected(categoryName)}
-					/>
-				);
-			})
-		}
+            allCategories.map( categoryName => {
+              return (
+                <Checkbox 
+                  key={categoryName}
+                  name = {categoryName} 
+                  onChange = {handleDropdown}
+                  checked = {isSelected(categoryName)}
+                />
+              );
+            })
+          }
 	</div>
 	);
 };
 
-ItemFilters.propTypes = {
-	allCategories: PropTypes.array.isRequired,
-	handleDropDown: PropTypes.func.isRequired,
-	isSelected: PropTypes.func.isRequired,
+  CategoriesFilter.propTypes = {
+    allCategories: PropTypes.array.isRequired,
+    handleDropdown: PropTypes.func.isRequired,
+    isSelected: PropTypes.func.isRequired,
+  };
 
+
+   const mapStateToProps = (store) => {
+    return {
+        items: store.items,
+    };
 };
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);
