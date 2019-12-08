@@ -34,7 +34,7 @@ const Header = ({user,cart}) => {
 Header.propTypes = {
 	token: PropTypes.string,
 	user: PropTypes.shape(UserPropTypes),
-    cart: PropTypes.arrayOf(ItemProps.string).isRequired,
+    cart: PropTypes.arrayOf(ItemProps).isRequired,
   };
 
  const Badge = ({children}) => {

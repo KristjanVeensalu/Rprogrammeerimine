@@ -30,7 +30,7 @@ class HomePage extends React.PureComponent{
     this.props.dispatch(getItems());
   } 
 	
-	handleDropdown = (event) => {
+	handleFilterSelect = (event) => {
 		const categoryName = event.target.name;
 
 		if(this.isSelected(categoryName)){ 
@@ -82,7 +82,7 @@ class HomePage extends React.PureComponent{
 				<div className = {"innerfilterFirst"}>
 					<CategoriesFilter
 						allCategories = {this.state.allCategories}
-						handleDropDown = {this.handleFilterSelect}
+						handleFilterSelect = {this.handleFilterSelect}
 						isSelected = {this.isSelected}
 					/>
 				</div>
@@ -104,7 +104,7 @@ class HomePage extends React.PureComponent{
 	}
 }
 
-const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
+const CategoriesFilter = ({allCategories, handleFilterSelect, isSelected}) => {
 	return(
 	<div className = "itemFilters-wrapper">
 		{
@@ -113,7 +113,7 @@ const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
                 <Checkbox
                   key={categoryName}
                   name = {categoryName} 
-                  onChange = {handleDropdown}
+                  onChange = {handleFilterSelect}
                   checked = {isSelected(categoryName)}
                 />
               );
@@ -125,7 +125,7 @@ const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
 
   CategoriesFilter.propTypes = {
     allCategories: PropTypes.array.isRequired,
-    handleDropdown: PropTypes.func.isRequired,
+    handleFilterSelect: PropTypes.func.isRequired,
     isSelected: PropTypes.func.isRequired,
   };
 

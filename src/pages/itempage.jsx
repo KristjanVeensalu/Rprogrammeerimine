@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./itempage.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
-import { addItem } from "../store/actions";
+import {addItem} from "../store/actions";
 import * as services from "../services.js";
 
 class ItemPage extends React.PureComponent{
@@ -33,7 +33,6 @@ class ItemPage extends React.PureComponent{
 
   handleBuy = () => {
     this.props.dispatch(addItem(this.state));
-  
   }
     render(){
       return (
@@ -61,6 +60,7 @@ class ItemPage extends React.PureComponent{
             </div>
             <div className={"itemPage-footer"}>
               <FancyButton onClick={this.handleBuy}>Osta</FancyButton>
+              <p className={"logintext"}>Must be logged in!</p>
             </div>
           </div>
         </>
