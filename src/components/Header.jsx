@@ -11,9 +11,6 @@ import * as selectors from "../store/selectors.js";
 
 
 
-
-
-
 const Header = ({user,cart}) => {
 	return(
 		<div className = "my-header">
@@ -37,7 +34,7 @@ const Header = ({user,cart}) => {
 Header.propTypes = {
 	token: PropTypes.string,
 	user: PropTypes.shape(UserPropTypes),
-    cart: PropTypes.arrayOf(ItemProps).isRequired,
+    cart: PropTypes.arrayOf(ItemProps.string).isRequired,
   };
 
  const Badge = ({children}) => {

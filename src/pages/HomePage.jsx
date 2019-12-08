@@ -30,7 +30,7 @@ class HomePage extends React.PureComponent{
     this.props.dispatch(getItems());
   } 
 	
-	handleFilterSelect = (event) => {
+	handleDropdown = (event) => {
 		const categoryName = event.target.name;
 
 		if(this.isSelected(categoryName)){ 
@@ -110,7 +110,7 @@ const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
 		{
             allCategories.map( categoryName => {
               return (
-                <Checkbox 
+                <Checkbox
                   key={categoryName}
                   name = {categoryName} 
                   onChange = {handleDropdown}
