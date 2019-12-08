@@ -13,6 +13,26 @@ export const ITEM_REMOVED = "ITEM_REMOVED";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
 
+export const removeItem = (itemId) => (dispatch, getState) => {
+    const store = getState();
+    const token = selectors.getToken(store);
+    const userId = selectors.getUser(store)._id;
+    services.removeItemFromCart({itemId, token, userId})
+    .then( () => {
+        toast.success("Toode eemaldatud!");
+        dispatch({
+            type: ITEM_REMOVED,
+            payload: itemId,
+        });
+    })
+    .catch( err => {
+        console.log(err);
+        toast.error("Toote eemaldamine ebaõnnestus!");
+    });
+};
+
+
+
 export const getItems = () => (dispatch, getState) => {
     const store = getState();
     if(selectors.getItems(store).length > 0) return null;
@@ -62,10 +82,7 @@ export const addItem = (item) => (dispatch, getState) => {
     });
 };
 
-export const removeItem = (_id) => ({
-    type: ITEM_REMOVED,
-    payload: _id,
-});
+
 
 export const userUpdate = (user) => ({
     type: USER_UPDATE,
