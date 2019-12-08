@@ -24,20 +24,24 @@ Lisage classi algusesse järgmine kood:
 
 E-Poe funktsionaalsus
 
-1. Todete lisamine ostukorvi
-2. Toodete eemaldamine ostukorvist
-3. Esilehel kuvatakse tooteid
+1. Todete lisamine ostukorvi + 
+2. Toodete eemaldamine ostukorvist + 
+3. Esilehel kuvatakse tooteid + 
 4. Toodetel on oma genereeritud leheküljed +
 5. Tooteid saab filtreerida kategooriate järgi +
-6. Tooteid saab sorteerida hinna järgi
-7. Tooteid saab sorteerida hinnavahemiku järgi
-8. Tooteid saab otsida nime järgi
-9. Kasutaja saab registreerida
-10. Kasutaja saab sisse logida
-11. Registreerimine keelab valesisestusi ja /-ib sisestuse
-12. Toote lehekülg avaneb popupina
-13. Esilehel on klikitav banner reklaamiga
-14. Lehekülgedel on footer (?)
-15. Esilehel on võimalik näha kõiki kategooriaid
-16. Leheküljel on dark mode
+6. Tooteid saab sorteerida hinna järgi + 
+7. Tooteid saab sorteerida hinnavahemiku järgi + 
+8. Kasutaja saab registreerida + 
+9. Kasutaja saab sisse logida + 
+10. Registreerimine keelab valesisestusi ja /-ib sisestuse + 
+11. Esilehel on banner + 
+12. Lehekülgedel on footer + 
+13. Esilehel on võimalik näha kõiki kategooriaid +
+14. Korvi pandud tooted on seotud kontoga + 
+15. Lehekülg muudab kujundust olenevalt ekraani suurusest + 
+16. Asju saab carti lisada ainult siis kui oled sisse logitud + 
+17. Leheküljel on popup staatuse kastid (Toast) + 
+18. Enamus lehekülje süsteemi on inglise keeles +
+19. Saab lisada carti erinevatest kategooriatest asju + 
+20. Korv arvutab automaatselt esemete hinnad + 
 
