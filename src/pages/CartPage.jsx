@@ -20,17 +20,29 @@ class CartPage extends React.PureComponent {
     };
 
     componentDidMount() {
-       const promises = this.props.cartItemIds.map( itemId => services.getItem({itemId}));
-       Promise.all(promises).then( items => {
-           this.setState({
-               cartItems: items,
-           });
-       })
-        .catch(err => {
-            console.error(err);
-            toast.error("Failed fetching items");
-        });
+        this.fetchItems();
     }
+
+    componentDidUpdate(prevProps) {
+        const prevPropIds = prevProps.cartItemIds.join("");
+        const currentIds = this.props.cartItemIds.join("");
+        if(prevPropIds != currentIds) {
+            this.fetchItems();
+        }
+    }
+
+    fetchItems = () => {
+        const promises = this.props.cartItemIds.map( itemId => services.getItem({itemId}));
+        Promise.all(promises).then( items => {
+            this.setState({
+                cartItems: items,
+            });
+        })
+         .catch(err => {
+             console.error(err);
+             toast.error("Failed fetching items!");
+         });
+    };
 
     calcNumbers = () => {
         const VAT = 20;
@@ -43,7 +55,6 @@ class CartPage extends React.PureComponent {
 
     handleTrash = (_id) => {
         this.props.dispatch(removeItem(_id));
-        toast.success("Toode eemaldatud!");
     };
 
     render() {

@@ -41,8 +41,8 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #f0a88d;
-  transition: 0.5s;
+  background: black;
+  transition: 0.2s;
 }
 .form .message {
   margin: 15px 0 0;

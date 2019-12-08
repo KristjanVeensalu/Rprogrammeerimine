@@ -29,7 +29,7 @@ class LoginPage extends React.PureComponent {
         .then(this.handleSuccess)
         .catch ( err => {
             console.log("Error", err);
-            toast.error("Logimine ebaõnnestus!");
+            toast.error("Error!");
         });
     };
 
