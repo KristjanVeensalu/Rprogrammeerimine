@@ -1,10 +1,10 @@
 import React from "react";
 import "./form.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { userUpdate, tokenUpdate } from "../store/actions";
-import { toast } from "react-toastify";
+import {connect} from "react-redux";
+import {userUpdate, tokenUpdate} from "../store/actions";
+import {toast} from "react-toastify";
 import * as services from "../services.js";
 
 
@@ -48,18 +48,16 @@ class LoginPage extends React.PureComponent {
     render() {
         return (
             <>
-            <div><h1 style={{textAlign: "center"}}>Login</h1></div>
             <div className="form">
             <div className="form-toggle"></div>
             <div className="form-panel one">
                 <div className="form-header">
-                    <h1>Account Login</h1>
+                    <h1>Login</h1>
                 </div>
                 <div className="form-content">
                     <form onSubmit = {this.handleSubmit}>
                         <div className="form-group"><label htmlFor="email">email</label><input type="email" name="email" value = {this.state.email} onChange = {this.handleChange}/></div>
                         <div className="form-group"><label htmlFor="password">Password</label><input type="password" name="password" value = {this.state.password} onChange = {this.handleChange} /></div>
-                        <div className="form-group"><label className="form-remember"><input type="checkbox"/>Remember Me</label><a className="form-recovery" href="#">Forgot Password?</a></div>
                         <div className="form-group"><button type="submit">Log In</button></div>
                         <p className= "message"> Not registered? <Link to={"/signup"}>Create an account</Link></p>
                     </form>
