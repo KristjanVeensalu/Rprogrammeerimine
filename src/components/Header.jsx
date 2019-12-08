@@ -6,9 +6,8 @@ import "./header.css";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ItemProps} from "../pages/CartPage.jsx";
-import { UserPropTypes } from "../store/reducer.js";
-
-
+import {UserPropTypes} from "../store/reducer.js";
+import * as selectors from "../store/selectors.js";
 
 
 
@@ -35,7 +34,7 @@ const Header = ({user,cart}) => {
 Header.propTypes = {
 	token: PropTypes.string,
 	user: PropTypes.shape(UserPropTypes),
-    cart: PropTypes.arrayOf(ItemProps).isRequired,
+    cart: PropTypes.arrayOf(ItemProps.string).isRequired,
   };
 
  const Badge = ({children}) => {
@@ -71,8 +70,8 @@ WelcomeIcon.propTypes = {
 };
 const mapStateToProps = (store) => {
   return {
-    cart: store.cart,
-    user: store.user,
+    cart: selectors.getCart(store),
+    user: selectors.getUser(store),
   };
 };
 

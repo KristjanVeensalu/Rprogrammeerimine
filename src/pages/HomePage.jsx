@@ -8,6 +8,7 @@ import SortDropdown from "../components/SortDropdown.jsx";
 import {connect} from "react-redux";
 import {ItemProps} from "./CartPage.jsx";
 import {getItems} from "../store/actions";
+import * as selectors from "../store/selectors.js";
 
 class HomePage extends React.PureComponent{
 	
@@ -29,7 +30,7 @@ class HomePage extends React.PureComponent{
     this.props.dispatch(getItems());
   } 
 	
-	handleFilterSelect = (event) => {
+	handleDropdown = (event) => {
 		const categoryName = event.target.name;
 
 		if(this.isSelected(categoryName)){ 
@@ -75,6 +76,8 @@ class HomePage extends React.PureComponent{
 		const visibleItems = this.getVisibleItems();
 		return(
 		<>
+			<div className = {"hero"}>
+			</div>
 			<div className = {"filterBar"}>
 				<div className = {"innerfilterFirst"}>
 					<CategoriesFilter
@@ -107,7 +110,7 @@ const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
 		{
             allCategories.map( categoryName => {
               return (
-                <Checkbox 
+                <Checkbox
                   key={categoryName}
                   name = {categoryName} 
                   onChange = {handleDropdown}
@@ -129,7 +132,7 @@ const CategoriesFilter = ({allCategories, handleDropdown, isSelected}) => {
 
    const mapStateToProps = (store) => {
     return {
-        items: store.items,
+        items: selectors.getItems(store),
     };
 };
 export default connect(mapStateToProps)(HomePage);
