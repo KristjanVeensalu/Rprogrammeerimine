@@ -19,7 +19,7 @@ export const removeItem = (itemId) => (dispatch, getState) => {
     const userId = selectors.getUser(store)._id;
     services.removeItemFromCart({itemId, token, userId})
     .then( () => {
-        toast.success("Toode eemaldatud!");
+        toast.success("Item removed!");
         dispatch({
             type: ITEM_REMOVED,
             payload: itemId,
@@ -27,7 +27,7 @@ export const removeItem = (itemId) => (dispatch, getState) => {
     })
     .catch( err => {
         console.log(err);
-        toast.error("Toote eemaldamine ebaõnnestus!");
+        toast.error("Failed to remove item!");
     });
 };
 
@@ -70,7 +70,7 @@ export const addItem = (item) => (dispatch, getState) => {
     const userId = selectors.getUser(store)._id;
     services.addItemToCart({itemId, token, userId})
     .then( () => {
-        toast.success("Toode lisatud edukalt!");
+        toast.success("Item added to cart!");
         dispatch({
             type: ITEM_ADDED,
             payload: itemId,
@@ -78,7 +78,7 @@ export const addItem = (item) => (dispatch, getState) => {
     })
     .catch( err => {
         console.log(err);
-        toast.error("Toote lisamine ebaõnnestus!");
+        toast.error("Failed to add item!");
     });
 };
 
