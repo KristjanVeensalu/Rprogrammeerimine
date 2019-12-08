@@ -72,3 +72,4 @@ class ItemPage extends React.PureComponent{
   };
   export default connect()(ItemPage);
  const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor sodales leo, vel tincidunt neque ultrices in. Praesent nisi sem, accumsan eget risus aliquam, egestas blandit tortor. Quisque id ultricies sem, nec aliquet dui. Sed et odio suscipit, iaculis mi quis, venenatis lorem. Quisque ex massa, aliquam eu tellus sagittis, dictum facilisis quam. Nulla hendrerit pellentesque placerat. Nam ornare libero id nunc accumsan, eu rhoncus nisi auctor. Nam nisi lectus, blandit sed pellentesque non, finibus vel metus. Nullam in blandit nulla. Suspendisse accumsan consectetur pharetra. Vivamus dictum nibh non dolor facilisis rhoncus. Quisque dignissim eu nulla vitae hendrerit. Suspendisse vitae turpis nisi";
+ //required for filename change 
