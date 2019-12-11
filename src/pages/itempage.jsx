@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import {addItem} from "../store/actions";
 import * as services from "../services.js";
 
+
+
 class ItemPage extends React.PureComponent{
 
   static propTypes = {
@@ -34,6 +36,9 @@ class ItemPage extends React.PureComponent{
   handleBuy = () => {
     this.props.dispatch(addItem(this.state));
   }
+
+
+
     render(){
       return (
         <>

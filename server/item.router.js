@@ -22,13 +22,7 @@ router.delete("/:itemId", (req, res) => {
 	*Create new item
 */
 router.post("/", (req, res) => {
-	const props = {
-		imgSrc:"google.com",
-		title:"phone blue",
-		price:200,
-		category:"phones",
-	}
-	const item1 = new Item(props);
+	const item1 = new Item(req.body);
 	item1.save( err => {
 		if(err){
 			console.log("Error", err);
